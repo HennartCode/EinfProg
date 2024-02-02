@@ -51,6 +51,24 @@ Tipp 3: Die Position eines Knotens im Array lässt sich relativ leicht bestimmen
 Tipp 4: Ja, das sind also sinnvolle Argumente für die Hilfsfunktion.
 Tipp 5: Regelmäßig zähneputzen und genug bewegen.
 */
-void tree_to_array(TreeNode *t, Array arr) {
 
+
+size_t heap_size(TreeNode *t){
+    if (t == NULL){
+        return 0;
+    }
+    return 1 + heap_size(t->left) + heap_size(t->right);
+}
+
+void recursive_array(TreeNode *t, Array arr, size_t ix){
+    if(t == NULL){
+        return;
+    }
+    arr.arr[ix] = t->item;      //erst Parent reinschreiben
+    recursive_array(t->left, arr, ((ix+1)*2)-1); //dann linkes Kind
+    recursive_array(t->right, arr, (ix+1)*2); //dann rechtes Kind
+}
+
+void tree_to_array(TreeNode *t, Array arr) {
+    recursive_array(t, arr, 0);
 }
