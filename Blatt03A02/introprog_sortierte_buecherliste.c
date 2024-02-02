@@ -21,13 +21,12 @@
  */
 element* insert_sorted(element* first, element* new_elem) {
 
-       // printf("testtest");
     if (first == NULL){
         new_elem->next = NULL;
 
         return new_elem;
     }else{
-        // printf("%p\n",first);
+
         element* insert_before = first;
         element* insert_after = NULL;
 
@@ -55,10 +54,13 @@ element* insert_sorted(element* first, element* new_elem) {
             return first;
         }
         
-        if (insert_after == NULL){
+        else{
             new_elem->next = insert_before;
             return new_elem;
         }    
+
+            
+        
     }
 }
 

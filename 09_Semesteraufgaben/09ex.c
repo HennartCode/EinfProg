@@ -25,7 +25,19 @@ Gegeben ein Array `arr`, geben Sie zurück, ob der zugehörige linksvollständig
 die max-heap Eigenschaft erfüllt.
 */
 bool is_max_heap(Array arr) {
-    return false;
+    size_t lci;
+    size_t rci;
+    for (size_t i = 0; i<arr.len; i++){
+        lci = ((i+1)*2)-1;
+        rci = (i+1)*2;
+        if (lci < arr.len && arr.arr[lci] > arr.arr[i]){
+            return false;
+        }
+        if (rci < arr.len && arr.arr[rci] > arr.arr[i]){
+            return false;
+        }
+    }
+    return true;
 }
 
 /*
